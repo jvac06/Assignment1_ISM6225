@@ -8,21 +8,21 @@ namespace Assignment1
     {
         private static void Main(string[] args)
         {
-            int num = 5;
-            PrintPattern(num);
-            
-            /*int n2 = 6;
+            /*int num = 5;
+            PrintPattern(num);*/
+
+            int n2 = 6;
             PrintSeries(n2);
 
-            string s = "09:15:35PM";
+            /*string s = "09:15:35PM";
             string t = UsfTime(s);
-            Console.WriteLine(t);
+            Console.WriteLine(t);*/
 
-            int n3 = 110;
+           /* int n3 = 110;
             int k = 11;
-            UsfNumbers(n3, k);
+            UsfNumbers(n3, k);*/
 
-            string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
+            /*string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
             PalindromePairs(words);*/
 
         }
@@ -61,78 +61,93 @@ namespace Assignment1
         }
 
         //Problem 2
-        /*private static void PrintSeries(int n2)
+        private static void PrintSeries(int n2)
         {
-            n2 – number of terms of the series, integer (int)
+            /*n2 – number of terms of the series, integer (int)
              *This method prints the following series till n terms: 1, 3, 6, 10, 15, 21……
              *For example, if n2 = 6, output will be
             * 1,3,6,10,15,21
             * Returns : N / A
             * Return type: void
             * Hint: Series is 1,1 + 2 = 3,1 + 2 + 3 = 6,1 + 2 + 3 + 4 = 10,1 + 2 + 3 + 4 + 5 = 15, 1 + 2 + 3 + 4 + 5 + 6 = 21……
-            
+            */
             try
             {
-                //Write your code here .!!
+                int num2 = n2;
+                int ans = 0;
+                int counter = 0;
+                List<int> mySeries = new List<int>();
+                while (num2 > 0)
+                {
+                    int[] myRange = Enumerable.Range(1, n2).ToArray();
+                    ans += myRange[counter];
+                    mySeries.Add(ans);
+                    counter++;
+                    num2--;
+                    
+                }
+                string printSeries = string.Join(",", mySeries);
+                Console.WriteLine(printSeries);
             }
             catch
             {
                 Console.WriteLine("Exception Occured while computing printSeries");
             }
-        }*/
 
-/*        public static string UsfTime(string s)
-        {
-            try
-            {
-                //Write your code here .!!
-            }
-            catch
-            {
-                Console.WriteLine("Exception Occured while computing UsfTime");
-            }
-            return null;
         }
 
+        /*        public static string UsfTime(string s)
+                {
+                    try
+                    {
+                        //Write your code here .!!
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Exception Occured while computing UsfTime");
+                    }
+                    return null;
+                }
 
-        public static void UsfNumbers(int n3, int k)
-        {
-            try
-            {
-                // Write your code here
-            }
-            catch
-            {
-                Console.WriteLine("Exception occured while computing UsfNumbers()");
-            }
-        }
+
+                public static void UsfNumbers(int n3, int k)
+                {
+                    try
+                    {
+                        // Write your code here
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Exception occured while computing UsfNumbers()");
+                    }
+                }
 
 
 
-        public static void PalindromePairs(string[] words)
-        {
-            try
-            {
-                // Write your code here
-            }
-            catch
-            {
+                public static void PalindromePairs(string[] words)
+                {
+                    try
+                    {
+                        // Write your code here
+                    }
+                    catch
+                    {
 
-                Console.WriteLine("Exception occured while computing     PalindromePairs()");
-            }
-        }
+                        Console.WriteLine("Exception occured while computing     PalindromePairs()");
+                    }
+                }
 
-        public static void Stones(int n4)
-        {
-            try
-            {
-                // Write your code here
-            }
-            catch
-            {
-                Console.WriteLine("Exception occured while computing Stones()");
-            }
-        }
-*/
+                public static void Stones(int n4)
+                {
+                    try
+                    {
+                        // Write your code here
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Exception occured while computing Stones()");
+                    }
+                }
+        */
     }
 }
