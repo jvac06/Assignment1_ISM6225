@@ -24,8 +24,8 @@ namespace Assignment1
             int k = 11;
             UsfNumbers(n3, k);*/
 
-            /*string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
-            PalindromePairs(words);*/
+            string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
+            PalindromePairs(words);
 
         }
         //Problem 1 
@@ -231,16 +231,46 @@ namespace Assignment1
              * returns      : N/A
              * return type  : void
              */
-            try
-            {
+            //try
+            //{
                 // Write your code here
+                string[,] palindromes;
+                for (int a = 0; a < words.Length; a++)
+                {
+                    for (int b = 0; b < words.Length; b++) 
+                    {
+                        string merged = string.Concat(words[a], words[b]);
+                        Debug.WriteLine(merged);
+                        if (merged.Length%2 == 0)
+                        {
+                            int mid = merged.Length / 2;
+                            Debug.WriteLine("mid: " + mid);
+                            int max = merged.Length - 1;
+                            //Debug.WriteLine(merged.Substring(merged.Length+max));
+                            for (int min = 0; min < mid; min++)
+                            {
+                                char left = merged[min];
+                                char right = merged[max]; 
+                                //Debug.WriteLine(merged[i]); 
+                                if (char.ToLower(left) == char.ToLower(right))
+                                {
+                                    Console.Write("Pali Match: " + merged);
+                                    Console.WriteLine("");
+                                }
+                                else { Debug.WriteLine("Not a pali: " + merged); }
+                                max--;
+                            }
+                        }
+                    }
+                    
+                }
+                
+            //}
+            //catch
+            //{
 
-            }
-            catch
-            {
-
-                Console.WriteLine("Exception occured while computing PalindromePairs()");
-            }
+            //    Console.WriteLine("Exception occured while computing PalindromePairs()");
+            //}
         }
 
         /*        public static void Stones(int n4)
