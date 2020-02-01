@@ -20,9 +20,9 @@ namespace Assignment1
             string t = UsfTime(s);
             Console.WriteLine(t);*/
 
-            int n3 = 110;
+            /*int n3 = 110;
             int k = 11;
-            UsfNumbers(n3, k);
+            UsfNumbers(n3, k);*/
 
             /*string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
             PalindromePairs(words);*/
@@ -167,9 +167,21 @@ namespace Assignment1
                 for (int i = 1; i <= totalInt.Length; i++)
                 {
                     string output;
-                    if (i % 3 == 0)
+                    if (i%3 == 0 && i%5 ==0 && i%7 == 0)  //try to use nesting instead
                     {
-                        output = "U";
+                        output = "USF";
+                    }
+                    else if (i%5==0 && i % 7 == 0)
+                    {
+                        output = "SF";
+                    }
+                    else if (i%3 == 0 && i%7 ==0) 
+                    {
+                        output = "UF";
+                    }
+                    else if (i % 3 == 0 && i % 5 == 0)
+                    {
+                        output = "US";
                     }
                     else if (i % 5 == 0)
                     {
@@ -178,6 +190,10 @@ namespace Assignment1
                     else if (i % 7 == 0)
                     {
                         output = "F";
+                    }
+                    else if (i % 3 == 0)
+                    {
+                        output = "U";
                     }
                     else
                     {
@@ -197,19 +213,35 @@ namespace Assignment1
         }
 
 
+        //Problem 5
+        public static void PalindromePairs(string[] words)
+        {
+            /*You are given a list of unique words, the task is to find all the pairs of 
+             * distinct indices (i,j) in the given list such that, the concatenation of two
+             * words i.e. words[i]+words[j] is a palindrome.
+             * Example:
+             * Input: ["abcd","dcba","lls","s","sssll"]
+             * Output: [[0,1],[1,0],[3,2],[2,4]] 
+             * Explanation: The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
+             * Example:
+             * Input: ["bat","tab","cat"]
+             * Output: [[0,1],[1,0]] 
+             * Explanation: The palindromes are ["battab","tabbat"]
+             * 
+             * returns      : N/A
+             * return type  : void
+             */
+            try
+            {
+                // Write your code here
 
-        /*        public static void PalindromePairs(string[] words)
-                {
-                    try
-                    {
-                        // Write your code here
-                    }
-                    catch
-                    {
+            }
+            catch
+            {
 
-                        Console.WriteLine("Exception occured while computing     PalindromePairs()");
-                    }
-                }*/
+                Console.WriteLine("Exception occured while computing PalindromePairs()");
+            }
+        }
 
         /*        public static void Stones(int n4)
                 {
