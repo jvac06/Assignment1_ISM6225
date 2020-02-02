@@ -24,8 +24,8 @@ namespace Assignment1
             int k = 11;
             UsfNumbers(n3, k);*/
 
-            string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
-            PalindromePairs(words);
+            /*string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
+            PalindromePairs(words);*/
 
         }
         //Problem 1 
@@ -167,15 +167,15 @@ namespace Assignment1
                 for (int i = 1; i <= totalInt.Length; i++)
                 {
                     string output;
-                    if (i%3 == 0 && i%5 ==0 && i%7 == 0)  //try to use nesting instead
+                    if (i % 3 == 0 && i % 5 == 0 && i % 7 == 0)  //try to use nesting instead
                     {
                         output = "USF";
                     }
-                    else if (i%5==0 && i % 7 == 0)
+                    else if (i % 5 == 0 && i % 7 == 0)
                     {
                         output = "SF";
                     }
-                    else if (i%3 == 0 && i%7 ==0) 
+                    else if (i % 3 == 0 && i % 7 == 0)
                     {
                         output = "UF";
                     }
@@ -231,59 +231,96 @@ namespace Assignment1
              * returns      : N/A
              * return type  : void
              */
-            //try
-            //{
+            try
+            {
                 // Write your code here
-                string[,] palindromes;
+                Dictionary<Tuple<int, int>, string> pairs = new Dictionary<Tuple<int, int>, string>();
                 for (int a = 0; a < words.Length; a++)
                 {
-                    for (int b = 0; b < words.Length; b++) 
+                    for (int b = 0; b < words.Length; b++)
                     {
                         string merged = string.Concat(words[a], words[b]);
                         Debug.WriteLine(merged);
-                        if (merged.Length%2 == 0)
+                        if (merged.Length % 2 != 0)
                         {
-                            int mid = merged.Length / 2;
-                            Debug.WriteLine("mid: " + mid);
-                            int max = merged.Length - 1;
-                            //Debug.WriteLine(merged.Substring(merged.Length+max));
-                            for (int min = 0; min < mid; min++)
-                            {
-                                char left = merged[min];
-                                char right = merged[max]; 
-                                //Debug.WriteLine(merged[i]); 
-                                if (char.ToLower(left) == char.ToLower(right))
-                                {
-                                    Console.Write("Pali Match: " + merged);
-                                    Console.WriteLine("");
-                                }
-                                else { Debug.WriteLine("Not a pali: " + merged); }
-                                max--;
-                            }
+                            continue;
                         }
+                        pairs.Add(new Tuple<int, int>(a, b), merged);
                     }
-                    
                 }
-                
-            //}
-            //catch
-            //{
-
-            //    Console.WriteLine("Exception occured while computing PalindromePairs()");
-            //}
+                Dictionary<Tuple<int, int>, string> palindromes = new Dictionary<Tuple<int, int>, string>();
+                foreach (KeyValuePair<Tuple<int, int>, string> word in pairs)
+                {
+                    int min = 0;
+                    int max = word.Value.Length - 1;
+                    int check = 1; // 1 is on, 0 is off
+                    while (check == 1)
+                    {
+                        if (min > max)
+                        {
+                            palindromes.Add(word.Key, word.Value);
+                            break;
+                        }
+                        char left = word.Value[min];
+                        char right = word.Value[max];
+                        if (char.ToLower(left) != char.ToLower(right))
+                        {
+                            check = 0;
+                        }
+                        min++;
+                        max--;
+                    }
+                }
+                Console.Write("[");
+                foreach (KeyValuePair<Tuple<int, int>, string> pali in palindromes)
+                {
+                    Console.Write(pali.Key + " ");
+                }
+                Console.Write("]");
+            }
+            catch
+            {
+                Console.WriteLine("Exception occured while computing PalindromePairs()");
+            }
         }
 
-        /*        public static void Stones(int n4)
-                {
-                    try
-                    {
-                        // Write your code here
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Exception occured while computing Stones()");
-                    }*/
+        public static void Stones(int n4)
+        {
+            /*You are playing a stone game with one of your friends. There are N number of 
+            * stones in a bag, each time one of you take turns to take out 1 to 3 stones. 
+            * The player who takes out the last stone will be the winner. In this case you
+            * will be the first player to remove the stone(s)(Player 1).
+            * 
+            * Write a method to determine whether you can win the game given the number of 
+            * stones in the bag. Print false if you cannot win the game, otherwise print any
+            * one set of moves where you are winning the game. Array should contain moves by
+            * both the players.
+            * Input: 4
+            * Output: false
+            * Explanation: As there are 4 stones in the bag, you will never win the game. 
+            * No matter 1,2 or 3 stones you take out, the last stone will always be removed by   * your friend.
+            * Input: 5
+            * Output: [1,1,3]   or [1,2,2] or [1,3,1]
+            * Player 1 picks up 1 stone then player 2 picks up 1 or 2 or 3 stones and the  
+            * remaining stones are picked up by player 1.
+            * Explanation: As there are 5 stones in the bag, you take out one stone.
+            * As there are 4 stones in the bag and it’s your friend’s turn. He will never win 
+            * the game because no matter 1,2 or 3 stones he takes out, you will the one to take 
+            * out the last stone.
+            * 
+            * returns      : N/A
+            * return type  : void
+            */
+            try
+            {
+                // Write your code here
+            }
+            catch
+            {
+                Console.WriteLine("Exception occured while computing Stones()");
+            }
 
 
+        }
     }
 }
