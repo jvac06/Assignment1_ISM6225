@@ -27,6 +27,10 @@ namespace Assignment1
             /*string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
             PalindromePairs(words);*/
 
+            Console.Write("Enter number of stones: ");
+            int n4 = Convert.ToInt32(Console.ReadLine());
+            Stones(n4);
+
         }
         //Problem 1 
         private static void PrintPattern(int n)
@@ -284,6 +288,7 @@ namespace Assignment1
             }
         }
 
+        //Problem 6
         public static void Stones(int n4)
         {
             /*You are playing a stone game with one of your friends. There are N number of 
@@ -298,7 +303,8 @@ namespace Assignment1
             * Input: 4
             * Output: false
             * Explanation: As there are 4 stones in the bag, you will never win the game. 
-            * No matter 1,2 or 3 stones you take out, the last stone will always be removed by   * your friend.
+            * No matter 1,2 or 3 stones you take out, the last stone will always be removed by   
+            * your friend.
             * Input: 5
             * Output: [1,1,3]   or [1,2,2] or [1,3,1]
             * Player 1 picks up 1 stone then player 2 picks up 1 or 2 or 3 stones and the  
@@ -314,6 +320,46 @@ namespace Assignment1
             try
             {
                 // Write your code here
+                uint remains = Convert.ToUInt32(n4);
+                List<uint> takenOut = new List<uint>();
+                uint take = 0;
+                int index = 0;
+                Random rnd = new Random();
+                while (remains > 0)   //ADD: have it do all possible choices for P2 within parameter 1,2,3
+                {
+                    if (index%2 == 0) 
+                    {
+                        switch (remains % 4)
+                        {
+                            case 0:
+                                Console.WriteLine("false");
+                                return;
+                            case 1:
+                                take = 1;
+                                takenOut.Insert(index, take);
+                                break;
+                            case 2:
+                                take = 2;
+                                takenOut.Insert(index, take);
+                                break;
+                            case 3:
+                                take = 3;
+                                takenOut.Insert(index, take);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        take = Convert.ToUInt32(rnd.Next(1, 4));
+                        takenOut.Insert(index, take);
+                    }
+                    remains -= take;
+                    index++;
+                }
+                foreach (int number in takenOut)
+                {
+                    Console.Write(number + " ");
+                }
             }
             catch
             {
