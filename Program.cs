@@ -27,9 +27,9 @@ namespace Assignment1
             /*string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
             PalindromePairs(words);*/
 
-            //Console.Write("Enter number of stones: ");
+            /*//Console.Write("Enter number of stones: ");
             int n4 = 8;//Convert.ToInt32(Console.ReadLine());
-            Stones(n4);
+            Stones(n4);*/
 
         }
         //Problem 1 
@@ -275,12 +275,7 @@ namespace Assignment1
                         max--;
                     }
                 }
-                Console.Write("[");
-                foreach (KeyValuePair<Tuple<int, int>, string> pali in palindromes)
-                {
-                    Console.Write(pali.Key + " ");
-                }
-                Console.Write("]");
+                Console.WriteLine("["+ String.Join(",", palindromes.Keys)+"]");
             }
             catch
             {
