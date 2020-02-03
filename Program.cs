@@ -171,33 +171,39 @@ namespace Assignment1
                 for (int i = 1; i <= totalInt.Length; i++)
                 {
                     string output;
-                    if (i % 3 == 0 && i % 5 == 0 && i % 7 == 0)  //try to use nesting instead
+                    if (i % 3 == 0)   //try to use nesting instead
                     {
-                        output = "USF";
-                    }
-                    else if (i % 5 == 0 && i % 7 == 0)
-                    {
-                        output = "SF";
-                    }
-                    else if (i % 3 == 0 && i % 7 == 0)
-                    {
-                        output = "UF";
-                    }
-                    else if (i % 3 == 0 && i % 5 == 0)
-                    {
-                        output = "US";
+                        if (i % 5 == 0 && i % 7 == 0)
+                        {
+                            output = "USF";
+                        }
+                        else if (i % 5 == 0)
+                        {
+                            output = "US";
+                        }
+                        else if (i % 7 == 0)
+                        {
+                            output = "UF";
+                        }
+                        else
+                        {
+                            output = "U";
+                        }
                     }
                     else if (i % 5 == 0)
                     {
-                        output = "S";
+                        if (i % 7 == 0)
+                        {
+                            output = "SF";
+                        }
+                        else
+                        {
+                            output = "S";
+                        }
                     }
                     else if (i % 7 == 0)
                     {
                         output = "F";
-                    }
-                    else if (i % 3 == 0)
-                    {
-                        output = "U";
                     }
                     else
                     {
