@@ -28,7 +28,7 @@ namespace Assignment1
             PalindromePairs(words);*/
 
             /*//Console.Write("Enter number of stones: ");
-            int n4 = 8;//Convert.ToInt32(Console.ReadLine());
+            int n4 = 9//Convert.ToInt32(Console.ReadLine());
             Stones(n4);*/
 
         }
