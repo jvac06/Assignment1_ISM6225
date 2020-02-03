@@ -325,41 +325,48 @@ namespace Assignment1
                 uint take = 0;
                 int index = 0;
                 Random rnd = new Random();
-                while (remains > 0)   //ADD: have it do all possible choices for P2 within parameter 1,2,3
+                while (remains > 0)   
                 {
-                    if (index%2 == 0) 
+                //if (index%2 == 0) 
+                //{
+                    switch (remains % 4)
                     {
-                        switch (remains % 4)
-                        {
-                            case 0:
+                        case 0:
+                            if(index%2 == 0)
+                            {
                                 Console.WriteLine("false");
                                 return;
-                            case 1:
-                                take = 1;
+                            }
+                            else 
+                            {
+                                take = Convert.ToUInt32(rnd.Next(1, 4));
+                                //Console.WriteLine("Random number taken: " + take);
                                 takenOut.Insert(index, take);
                                 break;
-                            case 2:
-                                take = 2;
-                                takenOut.Insert(index, take);
-                                break;
-                            case 3:
-                                take = 3;
-                                takenOut.Insert(index, take);
-                                break;
-                        }
+                                }
+                        case 1:
+                            take = 1;
+                            takenOut.Insert(index, take);
+                            break;
+                        case 2:
+                            take = 2;
+                            takenOut.Insert(index, take);
+                            break;
+                        case 3:
+                            take = 3;
+                            takenOut.Insert(index, take);
+                            break;
                     }
-                    else
-                    {
-                        take = Convert.ToUInt32(rnd.Next(1, 4));
-                        takenOut.Insert(index, take);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    take = Convert.ToUInt32(rnd.Next(1, 4));
+                    //    takenOut.Insert(index, take);
+                    //}
                     remains -= take;
                     index++;
                 }
-                foreach (int number in takenOut)
-                {
-                    Console.Write(number + " ");
-                }
+                Console.WriteLine("["+ String.Join(",", takenOut)+ "]");
             }
             catch
             {
