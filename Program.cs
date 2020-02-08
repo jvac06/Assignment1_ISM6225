@@ -10,11 +10,11 @@ namespace Assignment1
     {
         private static void Main(string[] args)
         {
-            /*int num = 5;
-            PrintPattern(num);*/
+            int n = 5;
+            PrintPattern(n);
 
-            /*int n2 = 6;
-            PrintSeries(n2);*/
+            int n2 = 6;
+            PrintSeries(n2);
 
             /*string s = "12:30";
             string t = UsfTime(s);
@@ -24,8 +24,8 @@ namespace Assignment1
             int k = 11;
             UsfNumbers(n3, k);*/
 
-            /*string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
-            PalindromePairs(words);*/
+            string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
+            PalindromePairs(words);
 
             /*//Console.Write("Enter number of stones: ");
             int n4 = 9//Convert.ToInt32(Console.ReadLine());
@@ -33,6 +33,12 @@ namespace Assignment1
 
         }
         //Problem 1 
+        /// <summary>
+        /// This method creates a countdown line that decreases in size each iteration. Given a positive interger(n), it creates a reversed enumerable range. Using a while loop 
+        /// it iterates a decreasing countdown of the range until the counter, "n", has reached 0. 
+        /// Each line range also decreases in size by one in each line iteration iteration by using the counter as guide.
+        /// </summary>
+        /// <param name="n"></param>
         private static void PrintPattern(int n)
         {
             /*n – number of lines for the pattern, integer (int)
@@ -48,16 +54,19 @@ namespace Assignment1
             */
             try
             {
-
-                int num = n;
-                while (num > 0)
+                if (n <= 0)
                 {
-                    int[] mySequence = Enumerable.Range(1, num).ToArray();
-                    Array.Reverse(mySequence);
-                    string printSequence = string.Join("", mySequence);
-                    Console.WriteLine(printSequence);
-                    num--;
+                    Console.WriteLine("printPattern Error: Number of lines entered (n) must be greater than 0");
                 }
+                while (n > 0)
+                {
+                    int[] mySequence = Enumerable.Range(1, n).ToArray();
+                    Array.Reverse(mySequence);
+                    string printSequence = string.Join("", mySequence);  //formats output so the range is printed without spaces in between
+                    Console.WriteLine(printSequence);
+                    n--;
+                }
+                Console.WriteLine("");
             }
             catch
             {
@@ -67,6 +76,13 @@ namespace Assignment1
         }
 
         //Problem 2
+        /// <summary>
+        /// This method allows one to easily add the numbers in sequence and view the sum of these numbers in a list printout. 
+        /// Given a positive interger(n2), it creates an enumerable range containing intergers, these intergers are summed
+        /// and logged into a list by using a while loop. The list is finally formatted to print the sum of each previous number
+        /// with a comma in between
+        /// </summary>
+        /// <param name="n2"></param>
         private static void PrintSeries(int n2)
         {
             /*n2 – number of terms of the series, integer (int)
@@ -79,20 +95,24 @@ namespace Assignment1
             */
             try
             {
-                int num2 = n2;
-                int ans = 0;
-                int counter = 0;
-                List<int> mySeries = new List<int>();
-                while (num2 > 0)
+                if (n2 <= 0)
                 {
-                    int[] myRange = Enumerable.Range(1, n2).ToArray();
-                    ans += myRange[counter];
+                    Console.WriteLine("PrintSeries Error: Number of terms in a series (n2) must be an interger greater than 0");
+                }
+                int ans = 0; 
+                int index = 0;
+                List<int> mySeries = new List<int>();
+                int[] myRange = Enumerable.Range(1, n2).ToArray();
+                while (n2 > 0)
+                {
+                    ans += myRange[index];
                     mySeries.Add(ans);
-                    counter++;
-                    num2--;
+                    index++;
+                    n2--;
                 }
                 string printSeries = string.Join(",", mySeries);
                 Console.WriteLine(printSeries);
+                Console.WriteLine();
             }
             catch
             {
@@ -101,7 +121,11 @@ namespace Assignment1
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         //Problem 3 
         public static string UsfTime(string s)
         {
@@ -112,7 +136,7 @@ namespace Assignment1
              * U has 60 S and each S has 45 F. 
              * Your task is to write a method usfTime which takes 12HR  format and return string 
              * representing input time in USF time format.
-             * Input format: A string s with time in 12 hour clock format (i.e. hh:mm:ssAM or            * hh:mm:ssPM) where 01<= hh<=12, 00<=mm,ss,<=60
+             * Input format: A string s with time in 12 hour clock format (i.e. hh:mm:ssAM or hh:mm:ssPM) where 01<= hh<=12, 00<=mm,ss,<=60
              * Output format: a string with converted time in USF clock format (i.e. UU:SS:FF ) 
              * where 01<= UU<=36, 00<=SS<=59,00<=FF<=45
              * 
@@ -142,8 +166,8 @@ namespace Assignment1
             catch
             {
                 Console.WriteLine("Exception Occured while computing UsfTime");
+                return null;
             }
-            return null;
         }
 
         //Problem 4
@@ -224,6 +248,10 @@ namespace Assignment1
 
 
         //Problem 5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="words"></param>
         public static void PalindromePairs(string[] words)
         {
             /*You are given a list of unique words, the task is to find all the pairs of 
@@ -250,7 +278,6 @@ namespace Assignment1
                     for (int b = 0; b < words.Length; b++)
                     {
                         string merged = string.Concat(words[a], words[b]);
-                        Debug.WriteLine(merged);
                         if (merged.Length % 2 != 0)
                         {
                             continue;
@@ -281,7 +308,9 @@ namespace Assignment1
                         max--;
                     }
                 }
-                Console.WriteLine("["+ String.Join(",", palindromes.Keys)+"]");
+                string output = String.Join(",", palindromes.Keys).Replace("(", "[");
+                string finalOutput = output.Replace(")", "]");
+                Console.WriteLine("["+ finalOutput +"]");
             }
             catch
             {
