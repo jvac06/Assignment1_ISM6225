@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
-using System.Diagnostics;
 
 namespace Assignment1
 {
@@ -109,7 +108,7 @@ namespace Assignment1
         /// the result in UU:SS:FF format.
         /// </summary>
         /// <param name="s">String passed to be checked if entered earth time is in correct format </param>
-        /// <returns> formatError= message showing error|| result = USF Time </returns>
+        /// <returns> formatError= message showing error|| result = USF Time </returns>     
         public static string UsfTime(string s)
         {
             try
@@ -140,6 +139,7 @@ namespace Assignment1
                 return null;
             }
         }
+        
         //Problem 4
         /// <summary>
         /// Given two positive intergers defining range size and number per line. This method prints the range in the defined format replacing 
@@ -216,7 +216,6 @@ namespace Assignment1
 
             }
         }
-
 
         //Problem 5
         /// <summary>
